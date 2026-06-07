@@ -54,7 +54,7 @@ function App() {
 
       <main>
         <section className="hero">
-          <h2>Olá, eu sou o <span className="gradient-text">Desenvolvedor</span></h2>
+          <h2>Olá, meu nome é <span className="gradient-text">Gilberto Ricardo Bonatti</span></h2>
           <p>
             Bem-vindo ao meu PortfolioHUB. Aqui você encontra meus projetos mais recentes e 
             experimentos com código, integrados diretamente do meu GitHub.
