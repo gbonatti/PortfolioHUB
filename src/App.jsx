@@ -43,10 +43,10 @@ function App() {
           <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer" title="GitHub">
             <FolderGit2 size={20} />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/gilberto-bonatti-1aa68874/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
             <UserCircle size={20} />
           </a>
-          <a href="mailto:contato@email.com">
+          <a href="mailto:gbonatti@gmail.com" title="E-mail">
             <Mail size={20} />
           </a>
         </div>
