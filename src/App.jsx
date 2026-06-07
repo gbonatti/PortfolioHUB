@@ -1,122 +1,116 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { Github, ExternalLink, Code2, Terminal, Linkedin, Mail } from 'lucide-react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const GITHUB_USERNAME = 'gbonatti'; // Extraído do link fornecido
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
+        
+        if (!response.ok) {
+          throw new Error('Falha ao buscar repositórios do GitHub');
+        }
+
+        const data = await response.json();
+        // Filtra forks e repositórios muito simples, se desejar (opcional)
+        const validProjects = data.filter(repo => !repo.fork);
+        setProjects(validProjects);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app-container">
+      <header className="header">
+        <h1 className="gradient-text">
+          <Terminal size={28} color="#60a5fa" />
+          PortfolioHUB
+        </h1>
+        <div className="social-links">
+          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer">
+            <Github size={20} />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Linkedin size={20} />
+          </a>
+          <a href="mailto:contato@email.com">
+            <Mail size={20} />
+          </a>
         </div>
-        <div>
-          <h1>Get started</h1>
+      </header>
+
+      <main>
+        <section className="hero">
+          <h2>Olá, eu sou o <span className="gradient-text">Desenvolvedor</span></h2>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Bem-vindo ao meu PortfolioHUB. Aqui você encontra meus projetos mais recentes e 
+            experimentos com código, integrados diretamente do meu GitHub.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
 
-      <div className="ticks"></div>
+        <section className="projects-section">
+          <h3>Meus Projetos Recentes</h3>
+          
+          {loading && <div className="loading-state">Buscando repositórios no GitHub...</div>}
+          
+          {error && <div className="error-state">Erro: {error}</div>}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          {!loading && !error && (
+            <div className="projects-grid">
+              {projects.map(project => (
+                <article key={project.id} className="project-card glass">
+                  <div className="project-header">
+                    <h4 className="project-title">
+                      <Code2 size={20} color="#60a5fa" />
+                      {project.name}
+                    </h4>
+                  </div>
+                  
+                  <p className="project-desc">
+                    {project.description || 'Nenhuma descrição fornecida para este repositório.'}
+                  </p>
+                  
+                  <div className="project-footer">
+                    <div className="tech-stack">
+                      {project.language && (
+                        <>
+                          <div className="tech-dot"></div>
+                          <span>{project.language}</span>
+                        </>
+                      )}
+                    </div>
+                    <div className="project-links">
+                      <a href={project.html_url} target="_blank" rel="noopener noreferrer" title="Ver no GitHub">
+                        <ExternalLink size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <footer className="footer">
+        <p>Desenvolvido com 🩵 usando React + Vite e Integrado ao GitHub</p>
+        <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>Desafio Final - Bootcamp CEUB</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
