@@ -1,16 +1,46 @@
-# React + Vite
+# PortfolioHUB 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um hub centralizado e dinâmico para exibir e gerenciar projetos e portfólios digitais. Este projeto foi desenvolvido como **Desafio Final** do bootcamp, integrando ferramentas modernas de desenvolvimento, gestão de código, segurança e integração contínua usando o ecossistema do **GitHub** e **Google Workspace (GEMINI)**.
 
-Currently, two official plugins are available:
+![Status do Projeto](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen)
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Funcionalidades
+- **Integração Dinâmica com GitHub:** Consome a API pública do GitHub para buscar e exibir automaticamente os repositórios mais recentes do usuário.
+- **Design Premium:** Interface construída com *Glassmorphism*, gradientes suaves, animações modernas e design responsivo.
+- **Gestão e Segurança:** 
+  - Regras de proteção na branch `main` (*Pull Requests* obrigatórios).
+  - Políticas de segurança documentadas em `SECURITY.md`.
+  - Dependabot ativado para verificação contínua de vulnerabilidades.
+- **Deploy Contínuo (CI/CD):** Deploy automatizado no **GitHub Pages** utilizando **GitHub Actions**.
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
+- **Frontend:** React, Vite, CSS puro (Variáveis, Flexbox, Grid), Lucide React (Ícones).
+- **Controle de Versão:** Git, GitHub.
+- **Automação:** GitHub Actions (Workflow de deploy).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Como Executar Localmente
 
-## Expanding the ESLint configuration
+1. Clone o repositório:
+```bash
+git clone https://github.com/SEU_USUARIO/PortfolioHUB.git
+```
+2. Acesse a pasta do projeto:
+```bash
+cd PortfolioHUB
+```
+3. Instale as dependências:
+```bash
+npm install
+```
+4. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔒 Segurança e Colaboração
+A colaboração neste repositório é feita através de *Forks* ou convites diretos. Todo código deve passar por *Pull Request* e revisão antes de ser integrado na *branch* principal (`main`). Para relatar vulnerabilidades, verifique as diretrizes descritas em `SECURITY.md`.
+
+---
+Desenvolvido com o auxílio do Google GEMINI IA.
