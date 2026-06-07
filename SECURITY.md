@@ -16,7 +16,7 @@ Apenas a versão mais recente do PortfolioHUB está atualmente recebendo atualiz
 Se você descobrir algum problema de segurança neste projeto, por favor, **NÃO** crie uma *Issue* pública.
 
 Siga os passos abaixo para relatar o problema:
-1. Envie um e-mail para **[SEU_EMAIL_AQUI]** com o título `[Vulnerabilidade de Segurança] - PortfolioHUB`.
+1. Envie um e-mail para **[gilberto.bonatti@sempreceub.com]** com o título `[Vulnerabilidade de Segurança] - PortfolioHUB`.
 2. Inclua uma descrição detalhada da vulnerabilidade.
 3. Inclua passos detalhados para reproduzir o problema.
 
