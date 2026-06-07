@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, ExternalLink, Code2, Terminal, Linkedin, Mail } from 'lucide-react';
+import { FolderGit2, ExternalLink, Code2, Terminal, UserCircle, Mail } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -40,11 +40,11 @@ function App() {
           PortfolioHUB
         </h1>
         <div className="social-links">
-          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer">
-            <Github size={20} />
+          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer" title="GitHub">
+            <FolderGit2 size={20} />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <Linkedin size={20} />
+          <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <UserCircle size={20} />
           </a>
           <a href="mailto:contato@email.com">
             <Mail size={20} />
